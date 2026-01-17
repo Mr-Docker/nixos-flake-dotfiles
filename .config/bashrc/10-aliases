@@ -1,0 +1,6 @@
+alias c=clear
+alias v=nvim
+alias ff=fastfetch
+
+alias ll='ls -la'
+alias candy='bash ~/candy.sh'
