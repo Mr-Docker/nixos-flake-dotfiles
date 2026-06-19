@@ -10,10 +10,15 @@
       url = "github:DreamMaoMao/mangowc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, home-manager, mangowc, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, mangowc, ... }: {
     nixosConfigurations.hack = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [ 
         ./configuration.nix
 	mangowc.nixosModules.mango
@@ -22,8 +27,10 @@
 	  home-manager = {
 	    useGlobalPkgs = true;
 	    useUserPackages = true;
-	    users.kle = import ./home.nix;
 	    backupFileExtension = "backup";
+	    extraSpecialArgs = { inherit inputs; };
+	    users.kle = import ./home.nix;
+	    sharedModules = [ inputs.noctalia.homeModules.default ];
 	  };
 	}
       ];

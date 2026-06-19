@@ -27,11 +27,31 @@
   # Allow unfree pkgs
   nixpkgs.config.allowUnfree = true;
 
+  # Fix Swaylock??
+  security.pam.services.swaylock = {};
+
   # Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+
+  # Upower
+  services.upower.enable = true;
+
+  # Power profile daemons
+  services.power-profiles-daemon.enable = true;
+
+  # Garbage Collect old generations
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 2d";
+  };
+  nix.settings.auto-optimise-store = true;
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
@@ -50,13 +70,13 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-  services.xserver = {
-    enable = true;
-    windowManager.qtile.enable = true;
-    displayManager.sessionCommands = ''
-      xset r rate 200 35 &
-    '';
-  };
+  #services.xserver = {
+  #  enable = true;
+  #  windowManager.qtile.enable = true;
+  #  displayManager.sessionCommands = ''
+  #    xset r rate 200 35 &
+  #  '';
+  #};
 
   
 
@@ -117,6 +137,32 @@
      localsend
      burpsuite
      eza
+     zed-editor
+     pcmanfm
+     ffuf
+     nmap
+     python3
+     posting
+     john
+     kiterunner
+     seclists
+     mitmproxy
+     nikto
+     sqlmap
+     unfurl
+     wpscan
+     wireshark
+     thc-hydra
+     ettercap
+     rustscan
+     openvpn
+     netcat
+     inetutils
+     brightnessctl
+     username-anarchy
+     arkenfox-userjs
+     dig
+     lf
    ];
 
    fonts.packages = with pkgs; [
