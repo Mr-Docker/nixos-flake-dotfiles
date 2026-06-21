@@ -163,6 +163,7 @@
      arkenfox-userjs
      dig
      lf
+     termusic
    ];
 
    fonts.packages = with pkgs; [
