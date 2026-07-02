@@ -30,6 +30,9 @@
   # Fix Swaylock??
   security.pam.services.swaylock = {};
 
+  # Enable Mullvad
+  services.mullvad-vpn.enable = true;
+
   # Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -164,6 +167,8 @@
      dig
      lf
      termusic
+     mullvad
+     blueman
    ];
 
    fonts.packages = with pkgs; [

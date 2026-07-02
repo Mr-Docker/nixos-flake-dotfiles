@@ -61,7 +61,7 @@
       "center": [
         {
           "colorizeIcons": false,
-          "hideMode": "visible",
+          "hideMode": "hidden",
           "id": "ActiveWindow",
           "maxWidth": 1000,
           "scrollingMode": "hover",
